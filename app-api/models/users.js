@@ -18,7 +18,8 @@ var userSchema = new mongoose.Schema({
 });
 
 
-// SETTING THE PASSWORD (using mongoose method setPassword)
+// SETTING THE PASSWORD
+// (using mongoose method setPassword)
 // (save a reference to the password by setting the salt and the hash)
 userSchema.methods.setPassword = function(password) {
   this.salt = crypto.randomBytes(16).toString('hex');
@@ -26,7 +27,8 @@ userSchema.methods.setPassword = function(password) {
 };
 
 
-// CHECKING THE PASSWORD (using mongoose method validPassword)
+// CHECKING THE PASSWORD
+// (using mongoose method validPassword)
 // (encrypt the salt and the password and see if it matches the stored hash)
 userSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
@@ -34,7 +36,8 @@ userSchema.methods.validPassword = function(password) {
 };
 
 
-// generate a JSON web token (JWT) (using mongoose method generateJwt)
+// generate a JSON web token (JWT)
+// (using mongoose method generateJwt)
 // generate JWT so API can send it out as a response
 // this will be called when a user registers and logs in
 userSchema.methods.generateJwt = function() {

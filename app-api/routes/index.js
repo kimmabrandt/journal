@@ -6,14 +6,17 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
+var ctrlProfile = require('../controllers/profile');
+var ctrlAuth = require('../controllers/authentication');
+
+
 // profile router
 // throw error if accessed without jwt
 router.get('/profile', auth, ctrlProfile.profileRead);
 
-// error handlers - catch unauthorized errors
-app.use(function(err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
-  }
-});
+
+// authentication
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+
+module.exports = router;

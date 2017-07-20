@@ -38,7 +38,7 @@ app.use('/api', routesApi);
 
 //* otherwise render index.html for angular app
 app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app-client', 'index.html'));
 });
 
 // catch 404 and forward to error handler

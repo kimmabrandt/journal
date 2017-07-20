@@ -1,7 +1,5 @@
 (function() {
-  angular.module('journalApp', ['ngRoute'])
-  .config(['$routeProvider', '$locationProvider', config])
-  .run(['$rootScope', '$location', 'authentication', run]);
+  angular.module('journalApp' ['ngRoute']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
@@ -33,13 +31,17 @@
 
   // protect profile route; if unauthorized user accesses, redirect to home
   function run($rootScope, $location, authentication) {
-     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-       if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
-         $location.path('/');
-       }
-     });
-   }
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+    if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+      $location.path('/');
+    }
+  });
+}
 
 
+  angular
+  .module('journalApp')
+  .config(['$routeProvider', '$locationProvider', config])
+  .run(['$rootScope', '$location', 'authentication', run]);
 
 })();

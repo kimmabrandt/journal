@@ -1,11 +1,11 @@
 (function () {
 
 angular
-  .module('meanApp')
+  .module('journalApp')
   .controller('loginCtrl', loginCtrl);
 
   loginCtrl.$inject = ['$location', 'authentication'];
-  function loginCtrl($loation, authentication) {
+  function loginCtrl($location, authentication) {
     var vm = this;
 
     vm.credentials = {

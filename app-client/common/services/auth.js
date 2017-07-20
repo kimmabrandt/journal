@@ -79,8 +79,12 @@
     };
 
     return {
+      currentUser : currentUser,
       saveToken : saveToken,
       getToken : getToken,
+      isLoggedIn : isLoggedIn,
+      register : register,
+      login : login,
       logout : logout
     };
   }
